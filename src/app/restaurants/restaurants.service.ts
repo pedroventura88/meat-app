@@ -20,4 +20,11 @@ export class RestaurantsService {
       .catch(ErrorHandler.handlerError);
 
   }
+
+  /* Metodo irá retornar apenas 1 restaurante por ID*/
+  restaurantById(id: string): Observable<Restaurant> {
+    return this.http.get(`${MEAT_API}/restaurants/${id}`)
+      .map(response => response.json())
+      .catch(ErrorHandler.handlerError);
+  }
 }
