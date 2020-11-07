@@ -16,7 +16,8 @@ export class RestaurantsComponent implements OnInit {
   /* Todas as injeções / dependências que tiverem sido atribuídas
   ao componente, serão carregadas pelo ngOnInit */
   ngOnInit() {
-    this.restaurants = this.restaurantsService.restaurants();
+    this.restaurantsService.restaurants()
+      .subscribe( restaurants => this.restaurants = restaurants);
   }
 
 }
