@@ -5,6 +5,7 @@ import { MEAT_API } from '../app.api';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { ErrorHandler } from '../app.error-handler';
+import { MenuItem } from '../restaurant-detail/menu-item/menu-item.model';
 
 /*Só foi necessário utilizar o @Injectable, porque nesta classe será utilizado o serviço HTTP*/
 @Injectable()
@@ -32,6 +33,13 @@ export class RestaurantsService {
   * O retorno é any, por que ainda não sei oq devo retornar */
   reviewsOfRestaurant(id: string): Observable<any> {
     return this.http.get(`${MEAT_API}/restaurants/${id}/reviews`)
+      .map(response => response.json())
+      .catch(ErrorHandler.handlerError);
+  }
+
+  /*Metodo vai retornar o menu do restaurante que está selecionado*/
+  menuOfRestaurants(id: string): Observable<MenuItem[]> {
+    return this.http.get(`${MEAT_API}/restaurants/${id}/menu`)
       .map(response => response.json())
       .catch(ErrorHandler.handlerError);
   }
