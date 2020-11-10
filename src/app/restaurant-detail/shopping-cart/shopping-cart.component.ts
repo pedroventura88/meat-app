@@ -7,7 +7,8 @@ import { ShoppingCartService } from './shopping-cart.service';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor(private shoppingCartService: ShoppingCartService) { }
+  constructor(private shoppingCartService: ShoppingCartService) {
+  }
 
   ngOnInit() {
   }
@@ -22,4 +23,15 @@ export class ShoppingCartComponent implements OnInit {
     return this.shoppingCartService.total();
   }
 
+  clear() {
+    this.shoppingCartService.clear();
+  }
+
+  removeItem(item: any) {
+    this.shoppingCartService.removeItem(item);
+  }
+
+  addItem(item: any) {
+    this.shoppingCartService.addItem(item);
+  }
 }

@@ -2,10 +2,13 @@
 <div class="col-md-9 col-xs-12">
 
 <mt-menu-item *ngFor="let item of menu | async"
-  [menuItem]="item" (add)="addMenuItem($event)"></mt-menu-item>
+  [menuItem]="item" (add)="shoppingCart.addItem($event)"></mt-menu-item>
 
 </div>
 <div class="col-md-3 col-xs-12">
-  <mt-shopping-cart></mt-shopping-cart>
+  <!-- no mt-shopping, será criada uma template-variabble chamada #shoppingCart.
+  Isso irá possibilitar que método addItem do component shoppingCart, possa ser utilizado no
+   ADD do mt-menu-item, pois ambos fazem a mesma função. -->
+  <mt-shopping-cart #shoppingCart></mt-shopping-cart>
 </div>
 <!-- FIM DO MENU -->
