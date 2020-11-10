@@ -4,8 +4,10 @@
 
 <section class="content">
   <section class="invoice">
+    {{form.valid}}
+    {{form.value | json}}
 
-    <form>
+    <form #form="ngForm" novalidate>
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
@@ -21,21 +23,23 @@
         <div class="col-sm-6 col-xs-12">
           <div class="form-group">
             <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> Endereço</label>
-            <input type="text" class="form-control" id="inputSuccess" placeholder="Endereço">
+            <input type="text" class="form-control" name="address" required ngModel minlength="5" placeholder="Endereço"
+                   autocomplete="off">
             <span class="help-block"></span>
           </div>
         </div>
         <div class="col-sm-2 col-xs-6">
           <div class="form-group has-success">
             <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> Número</label>
-            <input type="text" class="form-control" id="inputSuccess" placeholder="Número">
+            <input type="text" class="form-control" name="number" required ngModel placeholder="Número"
+                   autocomplete="off">
             <span class="help-block"><i class="fa fa-check"></i> Ok</span>
           </div>
         </div>
         <div class="col-sm-4 col-xs-6">
           <div class="form-group has-error">
             <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> Complemento</label>
-            <input type="text" class="form-control" id="inputSuccess" placeholder="Complemento">
+            <input type="text" class="form-control" name="optional" ngModel placeholder="Complemento">
             <span class="help-block"><i class="fa fa-remove"></i> Help block with error</span>
           </div>
 
@@ -109,7 +113,8 @@
                 <div class="iradio_flat-red checked" aria-checked="false" aria-disabled="false"
                      style="position: relative;">
                   <input type="radio" name="r3" class="flat-red" checked="" style="position: absolute; opacity: 0;"/>
-                  <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                  <ins class="iCheck-helper"
+                       style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
                 </div>
                 Dinheiro
               </label>
@@ -119,7 +124,8 @@
                 <div class="iradio_flat-red" aria-checked="false" aria-disabled="false"
                      style="position: relative;">
                   <input type="radio" name="r3" class="flat-red" checked="" style="position: absolute; opacity: 0;"/>
-                  <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                  <ins class="iCheck-helper"
+                       style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
                 </div>
                 Cartão de Débito
               </label>
@@ -134,7 +140,8 @@
 
           <div class="table-responsive">
             <table class="table">
-              <tbody><tr>
+              <tbody>
+              <tr>
                 <th style="width:50%">Itens:</th>
                 <td class="text-right">R$ 20,00</td>
               </tr>
@@ -146,7 +153,8 @@
                 <th>Total:</th>
                 <td class="text-right">R$ 28,00</td>
               </tr>
-              </tbody></table>
+              </tbody>
+            </table>
           </div>
         </div>
         <!-- /.col -->
@@ -156,8 +164,9 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <a href="order-summary.html" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Concluir Pedido
-        </a>
+        <button class="btn btn-success pull-right" [disabled]="!form.valid"><i class="fa fa-credit-card"></i> Concluir
+          Pedido
+        </button>
       </div>
     </div>
 
