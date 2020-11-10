@@ -104,8 +104,10 @@
           <p class="lead">Formas de Pagamento:</p>
 
           <div class="form-group">
-            <!-- Este mt-radio está recebendo as propriedades do PaymentOptions, que vem do order.component.ts -->
-            <mt-radio [options]="paymentOptions"></mt-radio>
+            <!-- Este mt-radio está recebendo as propriedades do PaymentOptions, que vem do order.component.ts.
+             Sempre que for utilizar ngModel, é necessário ter a propriedade name. Por isso, essa abaixo foi criada.
+             Dessa maneira, o atributo value, dos options, será sempre marcado quando for selecionado o radio -->
+            <mt-radio [options]="paymentOptions" name="paymentOption" ngModel></mt-radio>
           </div>
 
         </div>
