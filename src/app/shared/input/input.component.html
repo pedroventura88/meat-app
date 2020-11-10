@@ -1,0 +1,17 @@
+<div class="form-group" [class.has-success]="hasSuccess()"
+     [class.has-error]="hasError()">
+  <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> {{label}}</label>
+
+  <!-- UTILIZAÇÃO DE CONTENT PROJECTION com ng-content... toda a tag input, foi substituida por <ng-content> -->
+<!--  <input type="text" class="form-control" name="address" required ngModel minlength="5" placeholder="Endereço"-->
+<!--         autocomplete="off" #input="ngModel">-->
+
+  <!-- O ng-content representa um espaço que vai ENTRAR um conteúdo...
+   Esse conteúdo, virá do arquivo order.component.html-->
+  <ng-content></ng-content>
+
+  <span class="help-block" *ngIf="hasSuccess()">
+              <i class="fa fa-check"></i> Ok</span>
+  <span class="help-block" *ngIf="hasError()">
+              <i class="fa fa-remove"></i>{{errorMessage}}</span>
+</div>
