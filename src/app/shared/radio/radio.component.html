@@ -1,0 +1,14 @@
+<!-- O options que está no ngFor, é o array de radioOptions criado na radio.component.ts
+  ele irá conter os valores que estão vindo no atributo[] paymentOptions, que está na classe order.component.ts -->
+<div *ngFor="let option of options">
+  <label>
+    <!-- 1 - Para determinar se a propriedade pode ser checada ou não, utiliza-se o property binding [class.checked]
+         2 - Quando clicar em uma dessas opções, o valor dessa opção será setado através do (click)="setValue(option.value) -->
+    <div (click)="setValue(option.value)" class="iradio_flat-red checked" [class.checked]="option.value === value" aria-checked="false" aria-disabled="false"
+         style="position: relative;">
+      <ins class="iCheck-helper"
+           style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+    </div>
+    {{option.label}}
+  </label>
+</div>
