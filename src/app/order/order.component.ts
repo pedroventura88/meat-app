@@ -9,6 +9,9 @@ import { CartItem } from '../restaurant-detail/shopping-cart/cart-item.model';
 })
 export class OrderComponent implements OnInit {
 
+  /*O valor do delivery está sendo passado estaticamente, mas numa app de verdade deveria vir do backend*/
+  delivery = 8;
+
   /*Esse array de RadioOptions, será passado para o radio.component.html, através do Property Binding [options]="paymentOptions que está
    no order.component.html "*/
   paymentOptions: RadioOption[] = [
@@ -21,6 +24,10 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  itemsValue(): number {
+    return this.orderService.itemsValue();
   }
 
   cartItems() {
